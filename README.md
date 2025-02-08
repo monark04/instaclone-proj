@@ -8,7 +8,7 @@ Members :
   
   PATEL KISHAN PANKAJBHAI - 
   
-  VRUSHANK KALPESHBHAI DARJI - Hi From Vrushank 
+  VRUSHANK KALPESHBHAI DARJI - Hi From Vrushank
   
   JAYDEEPKUMAR HARSHADBHAI VANKAR -  Hi from jaydeep
 
