@@ -1,0 +1,17 @@
+.navbar {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .navbar a:hover {
+    color: #007bff;
+  }
+  
