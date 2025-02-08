@@ -2,7 +2,7 @@
 Group Project of Instagram Clone using MERN STACK - TEAM MONARK
 
 Members :
-  Monark Sharma - 
+  Monark Sharma - Hi from Monark
   
   ADITYA PRADIPBHAI GOGHARE - 
   
