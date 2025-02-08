@@ -12,3 +12,11 @@ Members :
   
   JAYDEEPKUMAR HARSHADBHAI VANKAR -  Hi from jaydeep
 
+
+
+
+# Running Our Project :
+- To run our project on your machine:
+- Clone this repository to your system
+- open terminal in your project directory
+- <code>
