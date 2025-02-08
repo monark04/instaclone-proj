@@ -19,4 +19,4 @@ Members :
 - To run our project on your machine:
 - Clone this repository to your system
 - open terminal in your project directory
-- <code>
+- <code>npm install</code>
