@@ -40,3 +40,71 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Apply a clean Instagram-like style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+}
+
+.post-container {
+  max-width: 500px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.action-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.like-comment-share {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.post-caption {
+  padding: 10px;
+}
+
+.post-time {
+  font-size: 12px;
+  color: gray;
+  padding: 10px;
+}
