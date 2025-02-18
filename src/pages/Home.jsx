@@ -1,52 +1,15 @@
 import Post from "./Post";
 
-const posts = [
-  { 
-    id: 1, 
-    image: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg", 
-    user: { 
-      name: "John Doe", 
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg" 
-    }, 
-    caption: "Chilling at the beach!" 
+// Generate 60 posts
+const posts = Array.from({ length: 60 }, (_, i) => ({
+  id: i + 1,
+  image: `https://picsum.photos/400/400?random=${i + 1}`,
+  user: {
+    name: `User ${i + 1}`,
+    avatar: `https://i.pravatar.cc/50?img=${(i % 70) + 1}`
   },
-  { 
-    id: 2, 
-    image: "https://images.pexels.com/photos/3688933/pexels-photo-3688933.jpeg", 
-    user: { 
-      name: "Jane Smith", 
-      avatar: "https://randomuser.me/api/portraits/women/45.jpg" 
-    }, 
-    caption: "Morning vibes 🌅" 
-  },
-  { 
-    id: 3, 
-    image: "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg", 
-    user: { 
-      name: "Alex Lee", 
-      avatar: "https://randomuser.me/api/portraits/men/76.jpg" 
-    }, 
-    caption: "City lights at night 🌃" 
-  },
-  { 
-    id: 4, 
-    image: "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg", 
-    user: { 
-      name: "Emma Watson", 
-      avatar: "https://randomuser.me/api/portraits/women/68.jpg" 
-    }, 
-    caption: "Exploring the mountains ⛰️" 
-  },
-  { 
-    id: 5, 
-    image: "https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg", 
-    user: { 
-      name: "David Miller", 
-      avatar: "https://randomuser.me/api/portraits/men/22.jpg" 
-    }, 
-    caption: "Coffee and work ☕💻" 
-  }
-];
+  caption: `Amazing post #${i + 1} ✨`
+}));
 
 
 
