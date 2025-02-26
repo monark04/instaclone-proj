@@ -1,16 +1,32 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import DesktopNav from "./DesktopNav";
+import TopNav from "./TopNav";
+import BottomNav from "./BottomNav";
 import "./NavBar.css";
 
-function NavBar() {
+const NavBar = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <nav className="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/explore">Explore</Link>
-      <Link to="/profile">Profile</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Signup</Link>
-    </nav>
+    <>
+      {isMobile ? (
+        <>
+          <TopNav />
+          <BottomNav />
+        </>
+      ) : (
+        <DesktopNav />
+      )}
+    </>
   );
-}
+};
 
 export default NavBar;
