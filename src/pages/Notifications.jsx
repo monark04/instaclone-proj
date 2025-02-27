@@ -1,4 +1,4 @@
-// Notifications.jsx
+// Notifications.jsx-adi
 import React from "react";
 
 const Notifications = () => {
