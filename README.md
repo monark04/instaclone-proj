@@ -1,5 +1,5 @@
 # Instaclone-proj
-Group Project of Instagram Clone using MERN STACK - TEAM MONARK.
+Group Project of Instagram Clone using MERN STACK - TEAM MONARK...
 
 Members :
 
