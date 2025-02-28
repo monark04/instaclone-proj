@@ -25,10 +25,10 @@ nav {
 }
 
 .desktop-nav .logo img {
-  width: 150px; /* Increased width for a bigger logo */
+  width: 200px; /* Increased width for a bigger logo */
   height: auto; /* Maintain aspect ratio */
   display: block; /* Prevents unwanted inline spacing */
-  margin-bottom: 20px; /* Keeps space below the logo */
+  margin-bottom: 0.5px; /* Keeps space below the logo */
 }
 
 
@@ -36,7 +36,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px;
+  padding: 5px;
   color: #fff;
   text-decoration: none;
 }
