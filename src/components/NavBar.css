@@ -31,7 +31,6 @@ nav {
   margin-bottom: 0.5px; /* Keeps space below the logo */
 }
 
-
 .desktop-nav .nav-item {
   display: flex;
   align-items: center;
@@ -47,14 +46,17 @@ nav {
 }
 
 /* Mobile Top Navigation */
-/* Mobile Top Nav */
 .top-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
+  padding: 12px 10px 5px 10px;
   background: #fff;
   border-bottom: 1px solid #dbdbdb;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1500; /* Ensures it stays above other elements */
 }
 
 .top-nav-logo {
@@ -65,6 +67,7 @@ nav {
 .top-nav-icons {
   display: flex;
   gap: 15px;
+  padding: 0px 15px 0px 0px;
 }
 
 .top-nav .nav-item img {
@@ -81,10 +84,12 @@ nav {
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 1500;
   background: #fff;
   border-top: 1px solid #dbdbdb;
 }
 
+/* Ensure bottom nav is above other elements */
 .bottom-nav .nav-item img {
   width: 28px;
   height: 28px;
@@ -94,6 +99,12 @@ nav {
 @media (max-width: 768px) {
   .desktop-nav {
     display: none;
+  }
+
+  /* Ensure content is not hidden behind the fixed navbars */
+  body {
+    padding-top: 60px; /* Adjust height to prevent content from being hidden under the top navbar */
+    padding-bottom: 50px; /* Adjust height to prevent content from being hidden under the bottom navbar */
   }
 }
 

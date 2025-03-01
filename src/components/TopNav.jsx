@@ -7,7 +7,9 @@ import "./NavBar.css";
 const TopNav = () => {
   return (
     <nav className="top-nav">
+      <NavLink to="/">
       <img src={InstagramLogo} alt="Instagram" className="top-nav-logo" />
+      </NavLink>
       <div className="top-nav-icons">
         <NavLink to="/create" className="nav-item">
           <img src={CreateIcon} alt="Create" />

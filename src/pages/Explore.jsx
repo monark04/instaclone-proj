@@ -1,66 +1,154 @@
-import { useState } from "react";
-import Modal from "react-modal";
-
-// Fix for react-modal
-Modal.setAppElement("#root");
-
-// Generate 60 posts
-const posts = Array.from({ length: 60 }, (_, i) => ({
-  id: i + 1,
-  image: `https://picsum.photos/400/400?random=${i + 1}`,
-  user: {
-    name: `User ${i + 1}`,
-    avatar: `https://i.pravatar.cc/50?img=${(i % 70) + 1}`
-  },
-  caption: `Amazing post #${i + 1} ✨`
-}));
+import { useState, useEffect, useRef } from "react";
+import Post from "../components/Post.jsx";
+import { posts } from "../components/Feed.jsx";
 
 const Explore = () => {
   const [selectedPost, setSelectedPost] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const scrollContainerRef = useRef(null);
 
-  const closeModal = () => {
+  // Handle resizing to switch between mobile and desktop behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const openPost = (index) => {
+    setSelectedPost(index);
+  };
+
+  const closePost = () => {
     setSelectedPost(null);
   };
 
+  const prevPost = (e) => {
+    e.stopPropagation();
+    setSelectedPost((prev) => (prev > 0 ? prev - 1 : posts.length - 1));
+  };
+
+  const nextPost = (e) => {
+    e.stopPropagation();
+    setSelectedPost((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
+  };
+
+  // Ensure scroll feed starts at selected post AND allows full scrolling
+  useEffect(() => {
+    if (isMobile && selectedPost !== null && scrollContainerRef.current) {
+      const selectedElement = scrollContainerRef.current.children[selectedPost];
+      if (selectedElement) {
+        selectedElement.scrollIntoView({ behavior: "instant" });
+      }
+    }
+  }, [selectedPost]);
+
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div style={{ padding: "20px", maxWidth: "1200px", margin: "auto" }}>
       {/* Grid Layout */}
-      <div className="grid-container">
-        {posts.map((post) => (
-          <img
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "10px",
+        }}
+      >
+        {posts.map((post, index) => (
+          <div
             key={post.id}
-            src={post.image}
-            alt="Explore Post"
-            className="cursor-pointer"
-            onClick={() => setSelectedPost(post)} // Trigger modal open on click
-          />
+            onClick={() => openPost(index)}
+            style={{ cursor: "pointer" }}
+          >
+            <img
+              src={post.image}
+              alt={`Post ${post.id}`}
+              style={{ width: "100%", display: "block" }}
+            />
+          </div>
         ))}
       </div>
 
-      {/* Modal for Single Post */}
-      {selectedPost && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            {/* Image Section */}
-            <div className="modal-image">
-              <img src={selectedPost.image} alt="Post" />
-            </div>
-
-            {/* Details Section */}
-            <div className="modal-details">
-              <div className="modal-user">
-                <img className="w-10 h-10 rounded-full" src={selectedPost.user.avatar} alt={selectedPost.user.name} />
-                <span className="font-semibold">{selectedPost.user.name}</span>
-              </div>
-              <p className="mt-3">{selectedPost.caption}</p>
-              <button
-                className="close-btn"
-                onClick={closeModal}
-              >
-                Close
-              </button>
-            </div>
+      {/* Desktop Popup */}
+      {!isMobile && selectedPost !== null && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(0, 0, 0, 0.8)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+          onClick={closePost}
+        >
+          <button
+            onClick={prevPost}
+            style={{
+              position: "absolute",
+              left: "10px",
+              fontSize: "24px",
+              color: "#fff",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            ◀
+          </button>
+          <div
+            style={{
+              background: "#fff",
+              padding: "10px",
+              borderRadius: "10px",
+              maxWidth: "90vw",
+            }}
+          >
+            <Post post={posts[selectedPost]} />
           </div>
+          <button
+            onClick={nextPost}
+            style={{
+              position: "absolute",
+              right: "10px",
+              fontSize: "24px",
+              color: "#fff",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            ▶
+          </button>
+        </div>
+      )}
+
+      {/* Mobile Scroll Feed (FIXED NAVBARS + FULL SCROLL) */}
+      {isMobile && selectedPost !== null && (
+        <div
+          style={{
+            position: "fixed",
+            top: "60px", // Keeps space for top navbar
+            bottom: "60px", // Keeps space for bottom navbar
+            left: 0,
+            width: "100vw",
+            height: "calc(100vh - 110px)", // Adjusted height to not overlap navbars
+            background: "#FFFFFF",
+            overflowY: "scroll",
+            zIndex: 1000,
+            scrollBehavior: "smooth",
+          }}
+          ref={scrollContainerRef}
+        >
+          {posts.map((post) => (
+            <div key={post.id} style={{ padding: "10px 0" }}>
+              <Post post={post} />
+            </div>
+          ))}
         </div>
       )}
     </div>

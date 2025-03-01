@@ -15,7 +15,9 @@ const DesktopNav = () => {
   return (
     <nav className="desktop-nav">
       <div className="logo">
+      <NavLink to="/">
         <img src={InstagramLogo} alt="Instagram" />
+        </NavLink>
       </div>
       <div className="nav-links">
         <NavLink to="/" className="nav-item"><img src={HomeIcon} alt="Home" /><span>Home</span></NavLink>
