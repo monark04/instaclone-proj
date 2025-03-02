@@ -67,7 +67,7 @@ nav {
 .top-nav-icons {
   display: flex;
   gap: 15px;
-  padding: 0px 15px 0px 0px;
+  padding: 0px 25px 0px 0px;
 }
 
 .top-nav .nav-item img {
