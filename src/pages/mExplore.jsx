@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import Post from "../components/Post.jsx";
-import { posts } from "../components/PostContent";
+import { posts } from "../components/PostContent.jsx"; // Ensure this import exists and is correct
 
-const Explore = () => {
+const mExplore = () => {
   const [selectedPost, setSelectedPost] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const scrollContainerRef = useRef(null);
 
-  // Handle resizing to switch between mobile and desktop behavior
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -16,13 +15,8 @@ const Explore = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const openPost = (index) => {
-    setSelectedPost(index);
-  };
-
-  const closePost = () => {
-    setSelectedPost(null);
-  };
+  const openPost = (index) => setSelectedPost(index);
+  const closePost = () => setSelectedPost(null);
 
   const prevPost = (e) => {
     e.stopPropagation();
@@ -34,19 +28,8 @@ const Explore = () => {
     setSelectedPost((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
   };
 
-  // Ensure scroll feed starts at selected post AND allows full scrolling
-  useEffect(() => {
-    if (isMobile && selectedPost !== null && scrollContainerRef.current) {
-      const selectedElement = scrollContainerRef.current.children[selectedPost];
-      if (selectedElement) {
-        selectedElement.scrollIntoView({ behavior: "instant" });
-      }
-    }
-  }, [selectedPost]);
-
   return (
     <div style={{ padding: "20px", maxWidth: "1200px", margin: "auto" }}>
-      {/* Grid Layout */}
       <div
         style={{
           display: "grid",
@@ -54,22 +37,11 @@ const Explore = () => {
           gap: "10px",
         }}
       >
-        {posts.map((post, index) => (
-          <div
-            key={post.id}
-            onClick={() => openPost(index)}
-            style={{ cursor: "pointer" }}
-          >
-            <img
-              src={post.image}
-              alt={`Post ${post.id}`}
-              style={{ width: "100%", display: "block" }}
-            />
-          </div>
+        {posts.map((post) => (
+          <Post key={post.id} post={post} openPost={openPost} />
         ))}
       </div>
 
-      {/* Desktop Popup */}
       {!isMobile && selectedPost !== null && (
         <div
           style={{
@@ -126,33 +98,8 @@ const Explore = () => {
           </button>
         </div>
       )}
-
-      {/* Mobile Scroll Feed (FIXED NAVBARS + FULL SCROLL) */}
-      {isMobile && selectedPost !== null && (
-        <div
-          style={{
-            position: "fixed",
-            top: "60px", // Keeps space for top navbar
-            bottom: "60px", // Keeps space for bottom navbar
-            left: 0,
-            width: "100vw",
-            height: "calc(100vh - 110px)", // Adjusted height to not overlap navbars
-            background: "#FFFFFF",
-            overflowY: "scroll",
-            zIndex: 1000,
-            scrollBehavior: "smooth",
-          }}
-          ref={scrollContainerRef}
-        >
-          {posts.map((post) => (
-            <div key={post.id} style={{ padding: "10px 0" }}>
-              <Post post={post} />
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };
 
-export default Explore;
+export default mExplore;

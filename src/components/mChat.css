@@ -1,0 +1,82 @@
+.mChat {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    background-color: #fff;
+  }
+  
+  .chat-header {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+  }
+  
+  .back-btn {
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 12px;
+  }
+  
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  
+  .chat-messages {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sent, .received {
+    max-width: 70%;
+    padding: 8px 12px;
+    margin: 4px 0;
+    border-radius: 12px;
+  }
+  
+  .sent {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .received {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    color: black;
+  }
+  
+  .chat-input {
+    display: flex;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+  }
+  
+  .chat-input button {
+    margin-left: 8px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  

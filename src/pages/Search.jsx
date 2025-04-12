@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Post from "../components/Post.jsx";
-import { posts } from "../components/Feed.jsx";
+import { posts } from "../components/PostContent";
 
 const names = [
   // 25 English Names

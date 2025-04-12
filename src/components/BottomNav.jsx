@@ -16,9 +16,9 @@ const BottomNav = () => {
       <NavLink to="/search" className="nav-item">
         <img src={SearchIcon} alt="Search" />
       </NavLink>
-      <NavLink to="/explore" className="nav-item">
+      {/* <NavLink to="/mexplore" className="nav-item">
         <img src={ExploreIcon} alt="Explore" />
-      </NavLink>
+      </NavLink> */}
       <NavLink to="/reels" className="nav-item">
         <img src={ReelsIcon} alt="Reels" />
       </NavLink>

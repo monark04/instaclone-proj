@@ -1,0 +1,63 @@
+.desktopChatFeed {
+    height: 100vh;
+    width: 500px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    /* max-width: 500px; Slightly reduced for better fit */
+    flex-shrink: 0;
+}
+
+.desktopChatFeed h2 {
+    padding: 5px;  /* Reduced padding */
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.chat-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 5px 12px; /* Reduced top/bottom padding */
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+    gap: 12px;  /* Ensures spacing between elements */
+}
+
+.chat-item:hover {
+    background-color: #f9f9f9;
+}
+
+.chat-avatar {
+    width: 70px;   /* Increased from 60px */
+    height: 70px;  /* Increased from 60px */
+    border-radius: 50%;
+}
+
+.chat-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-info h4 {
+    font-size: 20px;  /* Slightly bigger */
+    font-weight: 600; /* Bolder for emphasis */
+}
+
+.chat-info p {
+    font-size: 15px;
+    color: #555;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
