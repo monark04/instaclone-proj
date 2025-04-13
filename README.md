@@ -1,2 +1,11 @@
 Instagram Clone App with Responsiveness of App+Desktop in One Code.
-Clone the Repo and Just fireup Index.html
+
+Steps To Run:
+
+Clone the Repo.
+Open Terminal:
+  > npm install -g serve
+  > serve dist
+
+Click The LocalHost Address to try our App.
+
